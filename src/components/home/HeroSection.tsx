@@ -31,10 +31,6 @@ export default function HeroSection() {
     <section className="bg-white min-h-[90vh] flex items-center overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pb-6 w-full">
         <motion.div variants={textVariants} initial="hidden" animate="visible">
-          <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-[#0F172A] leading-tight mb-6">
-            Nikita, der Experte für Ihre Kosmetikgeräte
-          </h1>
-
           <div className="mb-8 space-y-0.5">
             {kretValues.map(({ letter, word }) => (
               <div key={letter} className="flex items-baseline">
@@ -44,11 +40,23 @@ export default function HeroSection() {
             ))}
           </div>
 
-          <p className="text-lg text-slate-600 mb-8 max-w-lg leading-relaxed">
-            Wir sind Ihr professioneller Ansprechpartner, wenn Sie den Sprung in die apparative Kosmetik
-            schaffen wollen. Schon seit 15 Jahren unterstützen wir Menschen dabei, sich den Traum der
-            Selbstständigkeit in der Beauty-Branche zu erfüllen.
-          </p>
+          <div className="text-lg text-slate-600 mb-8 max-w-lg leading-relaxed space-y-3">
+            <p>
+              Wir sind Ihr professioneller Ansprechpartner, wenn Sie den Sprung in die apparative Kosmetik
+              schaffen wollen. Wir finden den passenden Laser für Haarentfernung für Sie und bieten Ihnen
+              darüber hinaus auch andere Technologien wie IPL, SHR oder mehr an.
+            </p>
+            <p>
+              Schon seit 15 Jahren unterstützen wir Menschen dabei, sich den Traum der Selbstständigkeit in
+              der Beauty-Branche zu erfüllen – und haben nicht nur das passende Kosmetikgerät für Sie, sondern
+              bieten Ihnen auch einen qualitativ hochwertigen Service in Form von Kosmetikgerät-Wartungen und
+              Reparaturen aller Art.
+            </p>
+            <p>
+              Darüber hinaus erhalten Sie jederzeit eine gezielte Beratung auf dem gesamten Weg: Von der
+              kostenlosen Erstberatung über den Geräte-Kauf bis zum After-Sales-Service ein Leben lang.
+            </p>
+          </div>
 
           <div className="flex flex-col sm:flex-row gap-4">
             <Button href="#leistungen" variant="primary" size="lg">

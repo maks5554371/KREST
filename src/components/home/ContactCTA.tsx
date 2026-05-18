@@ -1,8 +1,8 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import { EnvelopeIcon, PhoneIcon } from '@heroicons/react/24/outline'
-import Button from '@/components/ui/Button'
+import { motion } from "framer-motion";
+import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/outline";
+import Button from "@/components/ui/Button";
 
 export default function ContactCTA() {
   return (
@@ -14,21 +14,23 @@ export default function ContactCTA() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-sm font-semibold tracking-widest text-[#B8943F] uppercase mb-3">
-            Kontakt
-          </p>
+          <p className="text-sm font-semibold tracking-widest text-[#B8943F] uppercase mb-3">Kontakt</p>
           <h2 className="text-3xl lg:text-4xl font-bold text-[#0F172A] mb-4">
             Bereit für den nächsten Schritt?
           </h2>
           <p className="text-slate-600 text-lg mb-10 max-w-2xl mx-auto">
-            Egal ob Wartung, Reparatur oder Beratung – sprechen Sie uns an. Wir melden uns
-            schnellstmöglich bei Ihnen. Die Erstberatung ist kostenlos und unverbindlich.
+            Egal ob Wartung, Reparatur oder Beratung – sprechen Sie uns an. Wir melden uns schnellstmöglich
+            bei Ihnen. Die Erstberatung ist kostenlos und unverbindlich.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
             <Button href="mailto:info@kret-manufaktur.de" variant="primary" size="lg">
               <EnvelopeIcon className="w-5 h-5" />
               E-Mail schreiben
+            </Button>
+            <Button href="https://wa.me/4915563338348" variant="whatsapp_outline" size="lg">
+              <img src="/icons/whatsapp.svg" alt="" className="w-5 h-5" />
+              WhatsApp schreiben
             </Button>
             <Button href="tel:[TELEFON]" variant="secondary" size="lg">
               <PhoneIcon className="w-5 h-5" />
@@ -53,5 +55,5 @@ export default function ContactCTA() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
