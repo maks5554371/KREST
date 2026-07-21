@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navLinks = [
+  { href: '/katalog', label: 'Katalog' },
   { href: '/wartung', label: 'Wartung' },
   { href: '/reparatur', label: 'Reparatur' },
   { href: '/geraete-verkauf', label: 'Geräte-Verkauf' },

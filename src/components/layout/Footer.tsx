@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { EnvelopeIcon, PhoneIcon } from '@heroicons/react/24/outline'
 
 const serviceLinks = [
+  { href: '/katalog', label: 'Geräte-Katalog' },
   { href: '/wartung', label: 'Wartung' },
   { href: '/reparatur', label: 'Reparatur' },
   { href: '/geraete-verkauf', label: 'Geräte-Verkauf / Leasing' },

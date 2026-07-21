@@ -20,6 +20,10 @@
 # production
 /build
 
+# Anwendungsdaten: SQLite-Datenbank und hochgeladene Dateien.
+# Gehören ins Backup des Servers, nicht ins Repository.
+/data
+
 # misc
 .DS_Store
 *.pem

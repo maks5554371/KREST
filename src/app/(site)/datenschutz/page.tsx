@@ -63,7 +63,38 @@ export default function DatenschutzPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-[#0F172A] mb-3">4. Ihre Rechte</h2>
+          <h2 className="text-xl font-bold text-[#0F172A] mb-3">4. Cookies</h2>
+          <p className="leading-relaxed mb-4">
+            Diese Website verwendet ausschliesslich technisch notwendige Cookies. Wir setzen
+            keine Cookies zu Analyse-, Tracking- oder Marketingzwecken ein und binden keine
+            entsprechenden Dienste Dritter ein. Eine Einwilligung nach § 25 Abs. 1 TTDSG ist
+            daher nicht erforderlich; die Speicherung erfolgt auf Grundlage von § 25 Abs. 2
+            Nr. 2 TTDSG sowie Art. 6 Abs. 1 lit. f DSGVO.
+          </p>
+          <h3 className="font-semibold mb-2">Eingesetzte Cookies und lokale Speicherung</h3>
+          <ul className="leading-relaxed list-disc pl-5 space-y-2 mb-4">
+            <li>
+              <strong>kret_admin</strong> – Session-Cookie des geschützten
+              Verwaltungsbereichs. Es wird ausschliesslich nach einer Anmeldung durch den
+              Websitebetreiber gesetzt, ist <em>HttpOnly</em> und läuft nach 7 Tagen ab.
+              Besucherinnen und Besucher der Website erhalten dieses Cookie nicht.
+            </li>
+            <li>
+              <strong>kret-cookie-notice-v1</strong> – Eintrag im lokalen Speicher
+              (localStorage) Ihres Browsers, der sich merkt, dass Sie den Cookie-Hinweis
+              bestätigt haben. Es handelt sich nicht um ein Cookie; es werden keine Daten an
+              uns übertragen.
+            </li>
+          </ul>
+          <p className="leading-relaxed">
+            Sie können Cookies jederzeit über die Einstellungen Ihres Browsers löschen oder
+            deren Speicherung einschränken. Die Funktionsfähigkeit dieser Website bleibt
+            davon unberührt.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-bold text-[#0F172A] mb-3">5. Ihre Rechte</h2>
           <p className="leading-relaxed">
             Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und
             Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein
@@ -78,7 +109,7 @@ export default function DatenschutzPage() {
 
         <section>
           <h2 className="text-xl font-bold text-[#0F172A] mb-3">
-            5. Beschwerderecht bei der Aufsichtsbehörde
+            6. Beschwerderecht bei der Aufsichtsbehörde
           </h2>
           <p className="leading-relaxed">
             Sie haben das Recht, sich bei der zuständigen Datenschutzaufsichtsbehörde über die

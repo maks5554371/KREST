@@ -1,9 +1,5 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import Header from '@/components/layout/Header'
-import Footer from '@/components/layout/Footer'
-import JsonLd from '@/components/ui/JsonLd'
-import { localBusinessSchema } from '@/lib/schema'
 import './globals.css'
 
 const inter = Inter({
@@ -32,15 +28,21 @@ export const metadata: Metadata = {
   },
 }
 
+/**
+ * Nur die Dokumenthülle. Header/Footer hängen an der Route-Gruppe `(site)`,
+ * damit die Administration eine eigene Oberfläche bekommt.
+ *
+ * `data-scroll-behavior="smooth"` ist seit Next.js 16 nötig, damit das globale
+ * `scroll-behavior: smooth` aus globals.css bei Navigationen nicht stört.
+ */
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="de" className={`${inter.className} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">
-        <JsonLd data={localBusinessSchema} />
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-      </body>
+    <html
+      lang="de"
+      data-scroll-behavior="smooth"
+      className={`${inter.className} h-full antialiased`}
+    >
+      <body className="min-h-full flex flex-col">{children}</body>
     </html>
   )
 }

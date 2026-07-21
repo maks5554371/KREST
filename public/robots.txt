@@ -5,9 +5,11 @@ Allow: /
 # *
 User-agent: *
 Disallow: /api/
+Disallow: /admin/
 
 # Host
 Host: https://www.kret-manufaktur.de
 
 # Sitemaps
 Sitemap: https://www.kret-manufaktur.de/sitemap.xml
+Sitemap: https://www.kret-manufaktur.de/katalog-sitemap.xml
