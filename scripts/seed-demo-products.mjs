@@ -1,18 +1,45 @@
 #!/usr/bin/env node
 /**
- * Demo-Produkte für die lokale Entwicklung. Idempotent: löscht vorhandene
- * Datensätze mit gleichem Slug und legt sie neu an. Nutzt die Placeholder-
- * Bilder aus /public/images (echte Produktfotos kommen später über /admin).
+ * Demo-Produkte zum Befüllen des Katalogs (lokal wie auf dem Server).
+ * Idempotent: löscht vorhandene Datensätze mit gleichem Slug und legt sie neu
+ * an. Nutzt die Placeholder-Bilder aus /public/images – echte Produktfotos
+ * werden anschließend über /admin ergänzt.
  *
- *   node scripts/seed-demo-products.mjs
+ *   npm run seed            (oder: node scripts/seed-demo-products.mjs)
+ *   npm run seed:clean      (entfernt die Demo-Produkte wieder)
  *
- * Zum Entfernen: node scripts/seed-demo-products.mjs --clean
+ * Die Datenbank wird wie in der App bestimmt: DATABASE_PATH aus .env.production
+ * / .env.local wird automatisch geladen. Ohne Angabe: data/kret.db.
  */
 import { createClient } from '@libsql/client'
 import { resolve } from 'node:path'
+import { readFileSync, existsSync } from 'node:fs'
+
+/**
+ * DATABASE_PATH aus den .env-Dateien lesen (gleiche Reihenfolge wie Next),
+ * damit der Seed auf dem Server dieselbe DB wie die App trifft. Bewusst ohne
+ * Abhängigkeit – ein simpler Parser für genau diesen einen Schlüssel.
+ */
+function loadDatabasePath() {
+  if (process.env.DATABASE_PATH) return // explizit gesetzt hat Vorrang
+  for (const file of ['.env.production.local', '.env.local', '.env.production', '.env']) {
+    const path = resolve(process.cwd(), file)
+    if (!existsSync(path)) continue
+    for (const line of readFileSync(path, 'utf8').split('\n')) {
+      const match = line.match(/^\s*DATABASE_PATH\s*=\s*(.*)\s*$/)
+      const value = match?.[1].trim().replace(/^["']|["']$/g, '')
+      if (value) {
+        process.env.DATABASE_PATH = value
+        return
+      }
+    }
+  }
+}
+loadDatabasePath()
 
 const dbPath = resolve(process.cwd(), process.env.DATABASE_PATH || 'data/kret.db')
 const db = createClient({ url: `file:${dbPath}` })
+console.log(`📦 Datenbank: ${dbPath}`)
 
 const IMG = {
   laser: '/images/service-verkauf.jpg',
@@ -172,12 +199,32 @@ const PRODUCTS = [
   },
 ]
 
+/**
+ * Die Tabellen legt die App per Migration beim ersten Zugriff an. Läuft der
+ * Seed davor, gäbe es „no such table“ – daher hier ein klarer Hinweis.
+ */
+async function assertSchema() {
+  const res = await db.execute(
+    "SELECT name FROM sqlite_master WHERE type='table' AND name IN ('products','categories')"
+  )
+  const names = res.rows.map((r) => String(r.name))
+  if (!names.includes('products') || !names.includes('categories')) {
+    console.error(
+      '\n⚠️  Tabellen fehlen. Die App muss einmal gestartet worden sein (Migrationen\n' +
+        '   laufen beim ersten Zugriff). Dann erneut ausführen:\n' +
+        '     sudo systemctl start kret && curl -s localhost:3000/katalog >/dev/null\n'
+    )
+    process.exit(1)
+  }
+}
+
 async function categoryMap() {
   const res = await db.execute('SELECT id, slug FROM categories')
   return new Map(res.rows.map((r) => [String(r.slug), Number(r.id)]))
 }
 
 async function clean() {
+  await assertSchema()
   for (const p of PRODUCTS) {
     await db.execute({ sql: 'DELETE FROM products WHERE slug = ?', args: [p.slug] })
   }
@@ -185,6 +232,7 @@ async function clean() {
 }
 
 async function seed() {
+  await assertSchema()
   const cats = await categoryMap()
   const now = new Date().toISOString()
   let order = 1
