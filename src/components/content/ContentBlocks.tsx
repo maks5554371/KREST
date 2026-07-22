@@ -13,29 +13,29 @@ export function renderSection(section: ServiceSection, idx: number, ctaHref: str
       return (
         <h2
           key={idx}
-          className="text-2xl lg:text-3xl font-bold text-[#0F172A] mt-10 mb-4 first:mt-0"
+          className="mb-4 mt-10 font-serif text-2xl font-bold text-navy-900 first:mt-0 lg:text-3xl"
         >
           {section.content as string}
         </h2>
       )
     case 'h3':
       return (
-        <h3 key={idx} className="text-xl font-bold text-[#0F172A] mt-8 mb-3">
+        <h3 key={idx} className="mb-3 mt-8 text-xl font-bold tracking-tight text-navy-900">
           {section.content as string}
         </h3>
       )
     case 'paragraph':
       return (
-        <p key={idx} className="text-slate-600 leading-relaxed mb-4">
+        <p key={idx} className="mb-4 leading-relaxed text-slate-600">
           {section.content as string}
         </p>
       )
     case 'bulletList':
       return (
-        <ul key={idx} className="space-y-3 mb-6">
+        <ul key={idx} className="mb-6 space-y-3">
           {(section.content as string[]).map((item, i) => (
             <li key={i} className="flex items-start gap-3">
-              <CheckCircleIcon className="w-5 h-5 text-[#B8943F] mt-0.5 shrink-0" />
+              <CheckCircleIcon className="mt-0.5 h-5 w-5 shrink-0 text-gold-500" />
               <span className="text-slate-600">{item}</span>
             </li>
           ))}

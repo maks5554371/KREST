@@ -18,51 +18,51 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        <Link href="/" className="text-xl font-black text-[#0F172A] tracking-tight shrink-0">
-          KRET<span className="text-[#B8943F]">-Manufaktur</span>
+    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/80 backdrop-blur-md">
+      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <Link href="/" className="shrink-0 text-xl font-black tracking-tight text-navy-900">
+          KRET<span className="text-gold-500">-Manufaktur</span>
         </Link>
 
-        <div className="hidden lg:flex items-center gap-6">
+        <div className="hidden items-center gap-6 lg:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-slate-700 hover:text-[#B8943F] transition-colors whitespace-nowrap"
+              className="whitespace-nowrap text-sm font-medium text-slate-700 transition-colors hover:text-gold-600"
             >
               {link.label}
             </Link>
           ))}
           <Link
             href="mailto:info@kret-manufaktur.de"
-            className="bg-[#0F172A] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#1e293b] transition-colors whitespace-nowrap"
+            className="whitespace-nowrap rounded-lg bg-navy-900 px-4 py-2 text-sm font-medium text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-navy-800 hover:shadow-md"
           >
             Kontakt
           </Link>
         </div>
 
         <button
-          className="lg:hidden p-2"
+          className="p-2 lg:hidden"
           aria-label={mobileOpen ? 'Menü schließen' : 'Menü öffnen'}
           onClick={() => setMobileOpen(!mobileOpen)}
         >
           {mobileOpen ? (
-            <XMarkIcon className="w-6 h-6 text-[#0F172A]" />
+            <XMarkIcon className="h-6 w-6 text-navy-900" />
           ) : (
-            <Bars3Icon className="w-6 h-6 text-[#0F172A]" />
+            <Bars3Icon className="h-6 w-6 text-navy-900" />
           )}
         </button>
       </nav>
 
       {mobileOpen && (
-        <div className="lg:hidden bg-white border-t border-slate-100 px-4 py-4 space-y-1">
+        <div className="space-y-1 border-t border-slate-100 bg-white px-4 py-4 lg:hidden">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setMobileOpen(false)}
-              className="block py-2 px-3 text-slate-700 hover:text-[#B8943F] hover:bg-slate-50 rounded-lg text-sm font-medium transition-colors"
+              className="block rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50 hover:text-gold-600"
             >
               {link.label}
             </Link>
@@ -70,7 +70,7 @@ export default function Header() {
           <Link
             href="mailto:info@kret-manufaktur.de"
             onClick={() => setMobileOpen(false)}
-            className="block mt-2 py-2 px-3 bg-[#0F172A] text-white rounded-lg text-sm font-medium text-center"
+            className="mt-2 block rounded-lg bg-navy-900 px-3 py-2 text-center text-sm font-medium text-white"
           >
             Kontakt
           </Link>

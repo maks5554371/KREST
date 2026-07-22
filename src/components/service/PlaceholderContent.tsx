@@ -44,11 +44,13 @@ export default function PlaceholderContent({ service }: { service: Service }) {
 
         {facts.length > 0 && (
           <div className="mb-12">
-            <h2 className="text-2xl font-bold text-[#0F172A] mb-6">Das erwartet Sie bei uns</h2>
+            <h2 className="mb-6 font-serif text-2xl font-bold text-navy-900">
+              Das erwartet Sie bei uns
+            </h2>
             <ul className="space-y-4">
               {facts.map((fact, i) => (
                 <li key={i} className="flex items-start gap-3">
-                  <CheckCircleIcon className="w-5 h-5 text-[#B8943F] mt-0.5 shrink-0" />
+                  <CheckCircleIcon className="mt-0.5 h-5 w-5 shrink-0 text-gold-500" />
                   <span className="text-slate-600">{fact}</span>
                 </li>
               ))}
@@ -56,9 +58,11 @@ export default function PlaceholderContent({ service }: { service: Service }) {
           </div>
         )}
 
-        <div className="bg-slate-50 rounded-2xl p-8 lg:p-10 text-center border border-slate-200">
-          <ClockIcon className="w-12 h-12 text-[#B8943F] mx-auto mb-4" />
-          <h3 className="text-xl font-bold text-[#0F172A] mb-3">
+        <div className="rounded-card border border-slate-200 bg-slate-50 p-8 text-center shadow-card lg:p-10">
+          <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-gold-500/10 ring-1 ring-gold-500/20">
+            <ClockIcon className="h-7 w-7 text-gold-600" />
+          </div>
+          <h3 className="mb-3 text-xl font-bold tracking-tight text-navy-900">
             Detaillierte Informationen folgen in Kürze
           </h3>
           <p className="text-slate-600 mb-8 max-w-md mx-auto">

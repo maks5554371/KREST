@@ -8,12 +8,14 @@ export const metadata: Metadata = {
 
 export default function DatenschutzPage() {
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <h1 className="text-3xl font-bold text-[#0F172A] mb-8">Datenschutzerklärung</h1>
+    <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
+      <h1 className="mb-8 border-b border-slate-200 pb-5 font-serif text-4xl font-bold text-navy-900">
+        Datenschutzerklärung
+      </h1>
 
-      <div className="space-y-8 text-slate-700">
+      <div className="space-y-8 leading-relaxed text-slate-700">
         <section>
-          <h2 className="text-xl font-bold text-[#0F172A] mb-3">1. Datenschutz auf einen Blick</h2>
+          <h2 className="mb-3 text-xl font-bold tracking-tight text-navy-900">1. Datenschutz auf einen Blick</h2>
           <h3 className="font-semibold mb-2">Allgemeine Hinweise</h3>
           <p className="leading-relaxed">
             Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren
@@ -23,7 +25,7 @@ export default function DatenschutzPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-[#0F172A] mb-3">
+          <h2 className="mb-3 text-xl font-bold tracking-tight text-navy-900">
             2. Verantwortliche Stelle
           </h2>
           <p className="leading-relaxed">
@@ -45,7 +47,7 @@ export default function DatenschutzPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-[#0F172A] mb-3">3. Datenerfassung auf dieser Website</h2>
+          <h2 className="mb-3 text-xl font-bold tracking-tight text-navy-900">3. Datenerfassung auf dieser Website</h2>
           <h3 className="font-semibold mb-2">Kontaktaufnahme per E-Mail</h3>
           <p className="leading-relaxed mb-4">
             Wenn Sie uns per E-Mail kontaktieren, werden Ihre angegebenen Daten (E-Mail-Adresse,
@@ -63,7 +65,7 @@ export default function DatenschutzPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-[#0F172A] mb-3">4. Cookies</h2>
+          <h2 className="mb-3 text-xl font-bold tracking-tight text-navy-900">4. Cookies</h2>
           <p className="leading-relaxed mb-4">
             Diese Website verwendet ausschliesslich technisch notwendige Cookies. Wir setzen
             keine Cookies zu Analyse-, Tracking- oder Marketingzwecken ein und binden keine
@@ -94,7 +96,7 @@ export default function DatenschutzPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-[#0F172A] mb-3">5. Ihre Rechte</h2>
+          <h2 className="mb-3 text-xl font-bold tracking-tight text-navy-900">5. Ihre Rechte</h2>
           <p className="leading-relaxed">
             Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und
             Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein
@@ -108,7 +110,7 @@ export default function DatenschutzPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-[#0F172A] mb-3">
+          <h2 className="mb-3 text-xl font-bold tracking-tight text-navy-900">
             6. Beschwerderecht bei der Aufsichtsbehörde
           </h2>
           <p className="leading-relaxed">

@@ -2,58 +2,71 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
+import { PhotoIcon } from '@heroicons/react/24/outline'
 import type { GalleryImage } from '@/types/product'
 
+/**
+ * Linke Spalte der Produktseite: großes Hauptbild + Thumbnail-Leiste.
+ * Kein eigener Section-Wrapper – wird direkt in die zweispaltige Kopfzeile
+ * der Detailseite gesetzt.
+ */
 export default function ProductGallery({ images }: { images: GalleryImage[] }) {
   const [active, setActive] = useState(0)
 
-  if (images.length === 0) return null
+  if (images.length === 0) {
+    return (
+      <div className="flex aspect-4/3 w-full items-center justify-center rounded-card border border-slate-200 bg-linear-to-br from-navy-800 to-navy-950">
+        <span className="select-none text-6xl font-black tracking-tight text-white/10">KRET</span>
+      </div>
+    )
+  }
 
-  // Falls ein Bild gelöscht wurde, während der Index noch darauf zeigt.
   const current = images[Math.min(active, images.length - 1)]
 
   return (
-    <section className="py-12 bg-white">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl lg:text-3xl font-bold text-[#0F172A] mb-6">Bildergalerie</h2>
-
-        <div className="relative aspect-16/9 w-full rounded-xl overflow-hidden bg-slate-100 mb-4">
-          <Image
-            src={current.url}
-            alt={current.alt}
-            fill
-            sizes="(max-width: 1024px) 100vw, 1024px"
-            className="object-contain"
-          />
-        </div>
-
+    <div className="lg:sticky lg:top-24">
+      <div className="relative aspect-4/3 w-full overflow-hidden rounded-card border border-slate-200 bg-slate-100 shadow-card">
+        <Image
+          src={current.url}
+          alt={current.alt}
+          fill
+          sizes="(max-width: 1024px) 100vw, 640px"
+          className="object-cover"
+          priority
+        />
         {images.length > 1 && (
-          <div className="grid grid-cols-4 sm:grid-cols-6 gap-3">
-            {images.map((image, i) => (
-              <button
-                key={`${image.url}-${i}`}
-                type="button"
-                onClick={() => setActive(i)}
-                aria-label={`Bild ${i + 1} anzeigen`}
-                aria-current={i === active}
-                className={`relative aspect-square rounded-lg overflow-hidden bg-slate-100 transition-all ${
-                  i === active
-                    ? 'ring-2 ring-[#B8943F] ring-offset-2'
-                    : 'opacity-70 hover:opacity-100'
-                }`}
-              >
-                <Image
-                  src={image.url}
-                  alt=""
-                  fill
-                  sizes="120px"
-                  className="object-cover"
-                />
-              </button>
-            ))}
-          </div>
+          <span className="absolute bottom-3 right-3 rounded-full bg-navy-950/60 px-2.5 py-1 text-xs font-medium text-white backdrop-blur-md">
+            {Math.min(active, images.length - 1) + 1} / {images.length}
+          </span>
         )}
       </div>
-    </section>
+
+      {images.length > 1 && (
+        <div className="mt-4 grid grid-cols-5 gap-3">
+          {images.map((image, i) => (
+            <button
+              key={`${image.url}-${i}`}
+              type="button"
+              onClick={() => setActive(i)}
+              aria-label={`Bild ${i + 1} anzeigen`}
+              aria-current={i === active}
+              className={`relative aspect-square cursor-pointer overflow-hidden rounded-xl bg-slate-100 transition-all ${
+                i === active
+                  ? 'ring-2 ring-gold-500 ring-offset-2'
+                  : 'opacity-60 hover:opacity-100'
+              }`}
+            >
+              {image.url ? (
+                <Image src={image.url} alt="" fill sizes="120px" className="object-cover" />
+              ) : (
+                <span className="flex h-full items-center justify-center">
+                  <PhotoIcon className="h-5 w-5 text-slate-300" />
+                </span>
+              )}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
   )
 }

@@ -3,16 +3,16 @@ import ServiceCard from '@/components/service/ServiceCard'
 
 export default function ServicesGrid() {
   return (
-    <section id="leistungen" className="py-20 bg-slate-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <p className="text-sm font-semibold tracking-widest text-[#B8943F] uppercase mb-3">
+    <section id="leistungen" className="border-y border-slate-100 bg-slate-50 py-20 lg:py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-14 text-center">
+          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-gold-600">
             Was wir anbieten
           </p>
-          <h2 className="text-3xl lg:text-4xl font-bold text-[#0F172A] mb-4">
+          <h2 className="mb-4 text-balance font-serif text-4xl font-bold text-navy-900 lg:text-5xl">
             Unsere Leistungen
           </h2>
-          <p className="text-slate-600 max-w-2xl mx-auto">
+          <p className="mx-auto max-w-2xl text-slate-600">
             Von der Wartung bis zur persönlichen Beratung – wir begleiten Sie auf dem gesamten Weg
             mit Ihrem Kosmetikgerät.
           </p>

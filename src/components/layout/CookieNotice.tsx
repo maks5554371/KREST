@@ -66,13 +66,13 @@ export default function CookieNotice() {
       aria-label="Hinweis zu Cookies"
       className="fixed bottom-0 inset-x-0 z-50 p-4 sm:p-6"
     >
-      <div className="max-w-4xl mx-auto bg-white border border-slate-200 shadow-xl rounded-xl p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center gap-4">
-        <p className="text-sm text-slate-600 leading-relaxed flex-1">
+      <div className="mx-auto flex max-w-4xl flex-col gap-4 rounded-card border border-slate-200 bg-white p-5 shadow-elevated sm:flex-row sm:items-center sm:p-6">
+        <p className="flex-1 text-sm leading-relaxed text-slate-600">
           Diese Website verwendet ausschliesslich technisch notwendige Cookies. Es findet
           kein Tracking und keine Analyse Ihres Verhaltens statt. Mehr dazu in unserer{' '}
           <Link
             href="/datenschutz"
-            className="text-[#B8943F] font-medium underline underline-offset-2 hover:text-[#9d7d34]"
+            className="font-medium text-gold-600 underline underline-offset-2 hover:text-gold-700"
           >
             Datenschutzerklärung
           </Link>
@@ -81,7 +81,7 @@ export default function CookieNotice() {
         <button
           type="button"
           onClick={acknowledge}
-          className="shrink-0 bg-[#0F172A] text-white px-6 py-3 rounded-lg text-sm font-semibold hover:bg-[#1e293b] transition-colors"
+          className="shrink-0 rounded-lg bg-navy-900 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-navy-800"
         >
           Verstanden
         </button>

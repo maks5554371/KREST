@@ -4,30 +4,29 @@ export default function ProductSpecs({ specs }: { specs: ProductSpecGroup[] }) {
   if (specs.length === 0) return null
 
   return (
-    <section className="py-12 bg-slate-50">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl lg:text-3xl font-bold text-[#0F172A] mb-6">
+    <section className="border-t border-slate-100 bg-slate-50 py-14 lg:py-16">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <h2 className="mb-8 font-serif text-2xl font-bold text-navy-900 lg:text-3xl">
           Technische Daten
         </h2>
 
-        <div className="space-y-8">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {specs.map((group, groupIndex) => (
-            <div key={`${group.group}-${groupIndex}`}>
-              <h3 className="text-sm font-semibold tracking-widest text-[#B8943F] uppercase mb-3">
+            <div
+              key={`${group.group}-${groupIndex}`}
+              className="overflow-hidden rounded-card border border-slate-200 bg-white shadow-card"
+            >
+              <h3 className="border-b border-slate-100 bg-slate-50/60 px-5 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-gold-600">
                 {group.group}
               </h3>
-              <dl className="bg-white rounded-xl border border-slate-200 overflow-hidden">
+              <dl>
                 {group.items.map((item, itemIndex) => (
                   <div
                     key={`${item.label}-${itemIndex}`}
-                    className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 px-5 py-3 border-b border-slate-100 last:border-b-0"
+                    className="flex flex-col gap-1 border-b border-slate-100 px-5 py-3.5 last:border-b-0 sm:flex-row sm:items-baseline sm:gap-4"
                   >
-                    <dt className="text-sm text-slate-500 sm:w-2/5 shrink-0">
-                      {item.label}
-                    </dt>
-                    <dd className="text-sm font-medium text-[#0F172A] sm:flex-1">
-                      {item.value}
-                    </dd>
+                    <dt className="shrink-0 text-sm text-slate-500 sm:w-2/5">{item.label}</dt>
+                    <dd className="text-sm font-medium text-navy-900 sm:flex-1">{item.value}</dd>
                   </div>
                 ))}
               </dl>

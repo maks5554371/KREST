@@ -8,7 +8,7 @@ import type { ProductWithCategory } from '@/types/product'
 
 export default function ProductHero({ product }: { product: ProductWithCategory }) {
   return (
-    <section className="relative h-64 lg:h-80 overflow-hidden bg-[#0F172A]">
+    <section className="relative h-64 overflow-hidden bg-navy-900 lg:h-80">
       {product.heroImage && (
         <Image
           src={product.heroImage}
@@ -19,7 +19,7 @@ export default function ProductHero({ product }: { product: ProductWithCategory 
           priority
         />
       )}
-      <div className="absolute inset-0 bg-[#0F172A]/70" />
+      <div className="absolute inset-0 bg-linear-to-t from-navy-950/90 via-navy-950/65 to-navy-950/40" />
 
       <div className="relative z-10 h-full flex flex-col justify-end max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
         <motion.div
@@ -35,11 +35,11 @@ export default function ProductHero({ product }: { product: ProductWithCategory 
             Zurück zum Katalog
           </Link>
           {product.brand && (
-            <p className="text-sm font-semibold tracking-widest text-[#B8943F] uppercase mb-2">
+            <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-gold-400">
               {product.brand}
             </p>
           )}
-          <h1 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-white">
+          <h1 className="text-balance font-serif text-3xl font-bold text-white lg:text-5xl xl:text-6xl">
             {product.headline}
           </h1>
         </motion.div>

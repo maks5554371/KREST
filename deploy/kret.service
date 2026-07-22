@@ -1,0 +1,31 @@
+# systemd-Unit für den Next-Prod-Server.
+# Ablage: /etc/systemd/system/kret.service
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now kret
+#   sudo systemctl status kret      # Status
+#   journalctl -u kret -f           # Logs
+
+[Unit]
+Description=KRET-Manufaktur (Next.js)
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+WorkingDirectory=/opt/kret-manufaktur
+Environment=NODE_ENV=production
+Environment=PORT=3000
+# Next lädt .env.production / .env.local aus WorkingDirectory selbst.
+ExecStart=/opt/kret-manufaktur/node_modules/.bin/next start -p 3000
+Restart=on-failure
+RestartSec=5
+
+# Härtung
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+# Persistente Daten (SQLite + Uploads) müssen beschreibbar bleiben:
+ReadWritePaths=/var/lib/kret
+
+[Install]
+WantedBy=multi-user.target

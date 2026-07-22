@@ -1,6 +1,12 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import ProductCard from '@/components/catalog/ProductCard'
+import {
+  ShieldCheckIcon,
+  ChatBubbleLeftRightIcon,
+  WrenchScrewdriverIcon,
+  BanknotesIcon,
+} from '@heroicons/react/24/outline'
+import CatalogGrid from '@/components/catalog/CatalogGrid'
 import ContactCTA from '@/components/home/ContactCTA'
 import { listPublishedProducts } from '@/lib/db/products'
 import { listCategoriesWithCounts } from '@/lib/db/categories'
@@ -26,6 +32,13 @@ export const metadata: Metadata = {
   },
 }
 
+const trustPoints = [
+  { Icon: ShieldCheckIcon, label: '100 % herstellerunabhängig' },
+  { Icon: ChatBubbleLeftRightIcon, label: 'Kostenlose Beratung' },
+  { Icon: WrenchScrewdriverIcon, label: 'Wartung & Reparatur' },
+  { Icon: BanknotesIcon, label: 'Kauf, Leasing & Miete' },
+]
+
 export default async function KatalogPage({
   searchParams,
 }: {
@@ -42,31 +55,49 @@ export default async function KatalogPage({
 
   return (
     <>
-      <section className="bg-[#0F172A] py-16 lg:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-sm font-semibold tracking-widest text-[#B8943F] uppercase mb-3">
+      <section className="relative overflow-hidden bg-navy-900 py-16 lg:py-24">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -top-24 right-0 h-72 w-72 rounded-full bg-gold-500/10 blur-3xl"
+        />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-gold-400">
             Unsere Geräte
           </p>
-          <h1 className="text-3xl lg:text-5xl font-bold text-white mb-4">
+          <h1 className="mb-4 text-balance font-serif text-4xl font-bold text-white lg:text-6xl">
             {activeCategory ? activeCategory.name : 'Kosmetikgeräte-Katalog'}
           </h1>
-          <p className="text-slate-300 max-w-2xl leading-relaxed">
+          <p className="max-w-2xl leading-relaxed text-slate-300">
             {activeCategory?.description ??
               'Von Diodenlasern über SHR und IPL bis hin zu Kryolipolyse und Aquafacial: Hier finden Sie unsere Geräte mit allen technischen Details. Sie sind sich unsicher, was zu Ihrem Studio passt? Wir beraten Sie kostenlos und unverbindlich.'}
           </p>
         </div>
       </section>
 
-      <section className="py-12 lg:py-16 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Trust-Leiste */}
+      <div className="border-b border-slate-200 bg-white">
+        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-4 px-4 py-5 sm:px-6 lg:grid-cols-4 lg:px-8">
+          {trustPoints.map(({ Icon, label }) => (
+            <div key={label} className="flex items-center gap-3">
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gold-500/10 ring-1 ring-gold-500/15">
+                <Icon className="h-5 w-5 text-gold-600" />
+              </span>
+              <span className="text-sm font-medium text-navy-900">{label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <section className="bg-slate-50 py-12 lg:py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {visibleCategories.length > 0 && (
-            <nav aria-label="Kategorien" className="flex flex-wrap gap-2 mb-10">
+            <nav aria-label="Kategorien" className="mb-10 flex flex-wrap gap-2">
               <Link
                 href="/katalog"
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
                   kategorie
-                    ? 'bg-white text-slate-700 border border-slate-200 hover:border-[#B8943F]'
-                    : 'bg-[#0F172A] text-white'
+                    ? 'border border-slate-200 bg-white text-slate-700 hover:border-gold-500 hover:text-navy-900'
+                    : 'bg-navy-900 text-white shadow-sm'
                 }`}
               >
                 Alle Geräte
@@ -75,10 +106,10 @@ export default async function KatalogPage({
                 <Link
                   key={category.id}
                   href={`/katalog?kategorie=${category.slug}`}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                  className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
                     kategorie === category.slug
-                      ? 'bg-[#0F172A] text-white'
-                      : 'bg-white text-slate-700 border border-slate-200 hover:border-[#B8943F]'
+                      ? 'bg-navy-900 text-white shadow-sm'
+                      : 'border border-slate-200 bg-white text-slate-700 hover:border-gold-500 hover:text-navy-900'
                   }`}
                 >
                   {category.name}
@@ -88,23 +119,7 @@ export default async function KatalogPage({
             </nav>
           )}
 
-          {products.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {products.map((product, index) => (
-                <ProductCard key={product.id} product={product} index={index} />
-              ))}
-            </div>
-          ) : (
-            <div className="bg-white rounded-2xl border border-slate-200 p-10 lg:p-14 text-center">
-              <h2 className="text-xl font-bold text-[#0F172A] mb-3">
-                Aktuell sind hier keine Geräte hinterlegt
-              </h2>
-              <p className="text-slate-600 max-w-md mx-auto">
-                Wir führen deutlich mehr Geräte, als hier gerade sichtbar sind. Sagen Sie
-                uns, was Sie suchen – wir finden das passende Gerät für Ihr Studio.
-              </p>
-            </div>
-          )}
+          <CatalogGrid products={products} />
         </div>
       </section>
 

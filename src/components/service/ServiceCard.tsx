@@ -23,33 +23,35 @@ export default function ServiceCard({ service, index }: { service: Service; inde
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: '-50px' }}
-      whileHover={{ y: -6 }}
+      whileHover={{ y: -8 }}
       transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-      className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col"
+      className="group relative flex flex-col overflow-hidden rounded-card border border-slate-200/70 bg-white shadow-card transition-[box-shadow,border-color] duration-300 hover:border-gold-500/60 hover:shadow-card-hover"
     >
-      <div className="relative aspect-4/3 w-full">
+      {/* Goldene Haarlinie, die beim Hover von links einläuft */}
+      <span className="pointer-events-none absolute inset-x-0 top-0 z-20 h-0.5 origin-left scale-x-0 bg-linear-to-r from-gold-500 to-gold-300 transition-transform duration-300 group-hover:scale-x-100" />
+
+      <div className="relative aspect-4/3 w-full overflow-hidden bg-navy-900">
         <Image
           src={service.image}
           alt={service.imageAlt}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-cover"
+          className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.06]"
         />
-        <div className="absolute inset-0 bg-linear-to-t from-[#0F172A]/40 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-navy-950/55 via-navy-950/5 to-transparent" />
       </div>
 
-      <div className="p-6 flex flex-col flex-1">
-        <h3 className="text-xl font-bold text-[#0F172A] mb-3">{service.title}</h3>
-        <p className="text-slate-600 text-sm leading-relaxed flex-1 mb-6">
-          {service.cardSummary}
-        </p>
+      <div className="flex flex-1 flex-col p-6">
+        <h3 className="mb-2.5 text-xl font-bold tracking-tight text-navy-900">{service.title}</h3>
+        <p className="mb-6 flex-1 text-sm leading-relaxed text-slate-600">{service.cardSummary}</p>
 
+        {/* Der Link spannt sich per ::after über die ganze Karte. */}
         <Link
           href={`/${service.slug}`}
-          className="inline-flex items-center gap-2 text-[#B8943F] font-semibold text-sm hover:gap-3 transition-all duration-200 group"
+          className="inline-flex items-center gap-1.5 text-sm font-semibold text-gold-600 transition-colors after:absolute after:inset-0 after:content-[''] hover:text-gold-700"
         >
           Mehr erfahren
-          <ArrowRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          <ArrowRightIcon className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
         </Link>
       </div>
     </motion.article>

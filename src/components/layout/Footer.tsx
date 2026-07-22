@@ -13,37 +13,42 @@ const serviceLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0F172A] text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+    <footer className="bg-navy-900 text-white">
+      {/* Feine goldene Akzentlinie als Übergang von der Seite zum Footer. */}
+      <div
+        aria-hidden
+        className="h-px bg-linear-to-r from-transparent via-gold-500/40 to-transparent"
+      />
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="mb-10 grid grid-cols-1 gap-10 md:grid-cols-3">
           <div>
-            <p className="text-xl font-black mb-3">
-              KRET<span className="text-[#B8943F]">-Manufaktur</span>
+            <p className="mb-3 text-xl font-black tracking-tight">
+              KRET<span className="text-gold-500">-Manufaktur</span>
             </p>
-            <p className="text-slate-400 text-sm leading-relaxed mb-4">
+            <p className="mb-4 text-sm leading-relaxed text-slate-400">
               Ihr professioneller Partner für Kosmetikgeräte seit über 15 Jahren.
               Kundenorientiert. Rentabel. Effizient. Transparent.
             </p>
             <div className="space-y-2">
               <a
                 href="mailto:info@kret-manufaktur.de"
-                className="flex items-center gap-2 text-slate-400 hover:text-[#B8943F] transition-colors text-sm"
+                className="flex items-center gap-2 text-sm text-slate-400 transition-colors hover:text-gold-400"
               >
-                <EnvelopeIcon className="w-4 h-4" />
+                <EnvelopeIcon className="h-4 w-4" />
                 info@kret-manufaktur.de
               </a>
               <a
                 href="tel:[TELEFON]"
-                className="flex items-center gap-2 text-slate-400 hover:text-[#B8943F] transition-colors text-sm"
+                className="flex items-center gap-2 text-sm text-slate-400 transition-colors hover:text-gold-400"
               >
-                <PhoneIcon className="w-4 h-4" />
+                <PhoneIcon className="h-4 w-4" />
                 [TELEFON]
               </a>
             </div>
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4 text-slate-200 text-sm uppercase tracking-wider">
+            <h4 className="mb-4 text-sm font-semibold uppercase tracking-[0.15em] text-slate-200">
               Leistungen
             </h4>
             <ul className="space-y-2">
@@ -51,7 +56,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-slate-400 hover:text-[#B8943F] transition-colors text-sm"
+                    className="text-sm text-slate-400 transition-colors hover:text-gold-400"
                   >
                     {link.label}
                   </Link>
@@ -61,14 +66,14 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4 text-slate-200 text-sm uppercase tracking-wider">
+            <h4 className="mb-4 text-sm font-semibold uppercase tracking-[0.15em] text-slate-200">
               Rechtliches
             </h4>
             <ul className="space-y-2">
               <li>
                 <Link
                   href="/impressum"
-                  className="text-slate-400 hover:text-[#B8943F] transition-colors text-sm"
+                  className="text-sm text-slate-400 transition-colors hover:text-gold-400"
                 >
                   Impressum
                 </Link>
@@ -76,7 +81,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/datenschutz"
-                  className="text-slate-400 hover:text-[#B8943F] transition-colors text-sm"
+                  className="text-sm text-slate-400 transition-colors hover:text-gold-400"
                 >
                   Datenschutz
                 </Link>
@@ -84,7 +89,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/agb"
-                  className="text-slate-400 hover:text-[#B8943F] transition-colors text-sm"
+                  className="text-sm text-slate-400 transition-colors hover:text-gold-400"
                 >
                   AGB
                 </Link>
@@ -93,7 +98,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-slate-800 pt-6 text-center text-slate-500 text-xs">
+        <div className="border-t border-white/10 pt-6 text-center text-xs text-slate-500">
           © {new Date().getFullYear()} KRET-Manufaktur. Alle Rechte vorbehalten.
         </div>
       </div>

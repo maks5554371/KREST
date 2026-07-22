@@ -51,14 +51,25 @@ const item = {
 
 export default function KretValues() {
   return (
-    <section className="py-20 bg-[#0F172A]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <p className="text-sm font-semibold tracking-widest text-[#B8943F] uppercase mb-3">
+    <section className="relative overflow-hidden bg-navy-900 py-20 lg:py-24">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-linear-to-b from-navy-950/60 via-transparent to-navy-950/40"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-0 h-72 w-[36rem] -translate-x-1/2 rounded-full bg-gold-500/10 blur-3xl"
+      />
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-14 text-center">
+          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-gold-400">
             Unsere Werte
           </p>
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">Der KRET-Standard</h2>
-          <p className="text-slate-400 max-w-xl mx-auto">
+          <h2 className="mb-4 text-balance font-serif text-4xl font-bold text-white lg:text-5xl">
+            Der KRET-Standard
+          </h2>
+          <p className="mx-auto max-w-xl text-slate-400">
             Bei uns erhalten Sie Qualität nach dem KRET-Standard – vier Werte, die alles
             beschreiben, wofür wir stehen.
           </p>
@@ -69,20 +80,24 @@ export default function KretValues() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-80px' }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4"
         >
           {values.map(({ letter, title, description, Icon }) => (
-            <motion.div key={letter} variants={item} className="text-center">
-              <div className="w-16 h-16 rounded-full bg-[#B8943F] flex items-center justify-center mx-auto mb-4">
-                <Icon className="w-8 h-8 text-white" />
+            <motion.div
+              key={letter}
+              variants={item}
+              className="group rounded-card border border-white/5 bg-white/[0.02] p-6 text-center transition-colors hover:border-gold-500/25 hover:bg-white/[0.04]"
+            >
+              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-linear-to-br from-gold-400 to-gold-600 shadow-lg shadow-gold-600/20">
+                <Icon className="h-8 w-8 text-white" />
               </div>
-              <div className="flex items-baseline justify-center mb-2">
-                <span className="text-2xl font-black text-[#B8943F]">{letter}</span>
-                <span className="text-xl font-semibold text-white">
+              <div className="mb-2 flex items-baseline justify-center">
+                <span className="text-2xl font-black text-gold-400">{letter}</span>
+                <span className="text-xl font-semibold tracking-tight text-white">
                   {title.substring(1)}
                 </span>
               </div>
-              <p className="text-slate-400 text-sm leading-relaxed">{description}</p>
+              <p className="text-sm leading-relaxed text-slate-400">{description}</p>
             </motion.div>
           ))}
         </motion.div>

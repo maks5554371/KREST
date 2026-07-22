@@ -8,12 +8,14 @@ export const metadata: Metadata = {
 
 export default function ImpressumPage() {
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <h1 className="text-3xl font-bold text-[#0F172A] mb-8">Impressum</h1>
+    <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
+      <h1 className="mb-8 border-b border-slate-200 pb-5 font-serif text-4xl font-bold text-navy-900">
+        Impressum
+      </h1>
 
-      <div className="prose prose-slate max-w-none space-y-6 text-slate-700">
+      <div className="prose prose-slate max-w-none space-y-6 leading-relaxed text-slate-700">
         <section>
-          <h2 className="text-xl font-bold text-[#0F172A] mb-3">Angaben gemäß § 5 TMG</h2>
+          <h2 className="mb-3 text-xl font-bold tracking-tight text-navy-900">Angaben gemäß § 5 TMG</h2>
           <p>
             KRET-Manufaktur
             <br />
@@ -28,7 +30,7 @@ export default function ImpressumPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-[#0F172A] mb-3">Kontakt</h2>
+          <h2 className="mb-3 text-xl font-bold tracking-tight text-navy-900">Kontakt</h2>
           <p>
             Telefon: [TELEFON]
             <br />
@@ -37,7 +39,7 @@ export default function ImpressumPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-[#0F172A] mb-3">Umsatzsteuer-ID</h2>
+          <h2 className="mb-3 text-xl font-bold tracking-tight text-navy-900">Umsatzsteuer-ID</h2>
           <p>
             Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:
             <br />
@@ -46,7 +48,7 @@ export default function ImpressumPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-[#0F172A] mb-3">
+          <h2 className="mb-3 text-xl font-bold tracking-tight text-navy-900">
             Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV
           </h2>
           <p>
@@ -59,7 +61,7 @@ export default function ImpressumPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-[#0F172A] mb-3">Haftung für Inhalte</h2>
+          <h2 className="mb-3 text-xl font-bold tracking-tight text-navy-900">Haftung für Inhalte</h2>
           <p>
             Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen
             Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als
@@ -70,7 +72,7 @@ export default function ImpressumPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-[#0F172A] mb-3">Haftung für Links</h2>
+          <h2 className="mb-3 text-xl font-bold tracking-tight text-navy-900">Haftung für Links</h2>
           <p>
             Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen
             Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr
@@ -80,7 +82,7 @@ export default function ImpressumPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-[#0F172A] mb-3">Urheberrecht</h2>
+          <h2 className="mb-3 text-xl font-bold tracking-tight text-navy-900">Urheberrecht</h2>
           <p>
             Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten
             unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung

@@ -1,10 +1,20 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Playfair_Display } from 'next/font/google'
 import './globals.css'
 
 const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
+  variable: '--font-inter',
+})
+
+// Eleganter Serif nur für Display-Überschriften (Empfehlung „Classic Elegant“:
+// Playfair Display + Inter für Luxus-/Beauty-Marken). Fließtext bleibt Inter.
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-playfair',
+  weight: ['500', '600', '700'],
 })
 
 export const metadata: Metadata = {
@@ -40,7 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="de"
       data-scroll-behavior="smooth"
-      className={`${inter.className} h-full antialiased`}
+      className={`${inter.variable} ${playfair.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
