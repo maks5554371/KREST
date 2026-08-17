@@ -1,12 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import {
-  UserGroupIcon,
-  CurrencyEuroIcon,
-  BoltIcon,
-  EyeIcon,
-} from '@heroicons/react/24/outline'
+import Image from 'next/image'
 
 const values = [
   {
@@ -14,28 +9,28 @@ const values = [
     title: 'Kundenorientiert',
     description:
       'Ihre Bedürfnisse stehen bei uns an erster Stelle. Jede Lösung wird individuell auf Sie abgestimmt.',
-    Icon: UserGroupIcon,
+    icon: '/icons/kret/kundenorientiert.png',
   },
   {
     letter: 'R',
     title: 'Rentabel',
     description:
       'Wir denken wirtschaftlich und beraten Sie so, dass Ihre Investitionen sich langfristig auszahlen.',
-    Icon: CurrencyEuroIcon,
+    icon: '/icons/kret/rentabel.png',
   },
   {
     letter: 'E',
     title: 'Effizient',
     description:
       'Schnelle Diagnosen, kurze Ausfallzeiten und strukturierte Abläufe – damit Ihr Studio läuft.',
-    Icon: BoltIcon,
+    icon: '/icons/kret/effizient.png',
   },
   {
     letter: 'T',
     title: 'Transparent',
     description:
       'Klare Kosten, offene Kommunikation und keine versteckten Schritte – bei uns wissen Sie stets, woran Sie sind.',
-    Icon: EyeIcon,
+    icon: '/icons/kret/transparent.png',
   },
 ]
 
@@ -82,14 +77,21 @@ export default function KretValues() {
           viewport={{ once: true, margin: '-80px' }}
           className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4"
         >
-          {values.map(({ letter, title, description, Icon }) => (
+          {values.map(({ letter, title, description, icon }) => (
             <motion.div
               key={letter}
               variants={item}
               className="group rounded-card border border-white/5 bg-white/[0.02] p-6 text-center transition-colors hover:border-gold-500/25 hover:bg-white/[0.04]"
             >
-              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-linear-to-br from-gold-400 to-gold-600 shadow-lg shadow-gold-600/20">
-                <Icon className="h-8 w-8 text-white" />
+              {/* Dunkler Kreis, damit die goldenen Icons ihre Farbe behalten */}
+              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-navy-950/70 ring-1 ring-gold-500/25 shadow-lg shadow-navy-950/40 transition-colors group-hover:ring-gold-400/50">
+                <Image
+                  src={icon}
+                  alt=""
+                  width={96}
+                  height={96}
+                  className="h-9 w-9 transition-transform duration-300 group-hover:scale-110"
+                />
               </div>
               <div className="mb-2 flex items-baseline justify-center">
                 <span className="text-2xl font-black text-gold-400">{letter}</span>

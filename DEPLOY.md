@@ -131,6 +131,12 @@ sudo -u www-data node scripts/seed-demo-products.mjs
 
 ## Обновление (редеплой)
 
+Каталог принадлежит `www-data`, а git запускаем от root — один раз разрешаем это
+(иначе git ругнётся «dubious ownership»):
+```bash
+sudo git config --global --add safe.directory /opt/kret-manufaktur
+```
+
 ```bash
 cd /opt/kret-manufaktur
 sudo git pull
@@ -152,6 +158,7 @@ sudo tar czf kret-backup-$(date +%F).tar.gz -C /var/lib kret
 
 | Симптом | Проверка |
 |---|---|
+| `git pull`: dubious ownership | `sudo git config --global --add safe.directory /opt/kret-manufaktur` (разово) |
 | `npm ci`: EACCES `/var/www/.npm` или `next: not found` | ставить/собирать **от root**, не от www-data: `sudo rm -rf node_modules .next && sudo npm ci && sudo npm run build`, затем `sudo chown -R www-data:www-data /opt/kret-manufaktur` |
 | Картинки отдаются битые / 500 на `/_next/image` | `.next` не пишется www-data → `sudo chown -R www-data:www-data /opt/kret-manufaktur` |
 | Сервис не стартует | `journalctl -u kret -e` (частая причина — пустой `SESSION_SECRET`, нужен ≥ 32 симв.) |

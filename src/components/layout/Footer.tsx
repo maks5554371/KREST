@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { EnvelopeIcon, PhoneIcon } from '@heroicons/react/24/outline'
+import CookieSettingsButton from '@/components/layout/CookieSettingsButton'
 
 const serviceLinks = [
   { href: '/katalog', label: 'Geräte-Katalog' },
@@ -93,6 +94,9 @@ export default function Footer() {
                 >
                   AGB
                 </Link>
+              </li>
+              <li>
+                <CookieSettingsButton className="text-left text-sm text-slate-400 transition-colors hover:text-gold-400" />
               </li>
             </ul>
           </div>

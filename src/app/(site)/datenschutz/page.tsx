@@ -65,14 +65,36 @@ export default function DatenschutzPage() {
         </section>
 
         <section>
-          <h2 className="mb-3 text-xl font-bold tracking-tight text-navy-900">4. Cookies</h2>
+          <h2 className="mb-3 text-xl font-bold tracking-tight text-navy-900">
+            4. Cookies und Einwilligung
+          </h2>
           <p className="leading-relaxed mb-4">
-            Diese Website verwendet ausschliesslich technisch notwendige Cookies. Wir setzen
-            keine Cookies zu Analyse-, Tracking- oder Marketingzwecken ein und binden keine
-            entsprechenden Dienste Dritter ein. Eine Einwilligung nach § 25 Abs. 1 TTDSG ist
-            daher nicht erforderlich; die Speicherung erfolgt auf Grundlage von § 25 Abs. 2
-            Nr. 2 TTDSG sowie Art. 6 Abs. 1 lit. f DSGVO.
+            Technisch notwendige Cookies setzen wir auf Grundlage von § 25 Abs. 2 Nr. 2 TDDDG
+            (vormals TTDSG) sowie Art. 6 Abs. 1 lit. f DSGVO ohne Einwilligung ein. Alle
+            übrigen Kategorien – funktionale, statistische und Marketing-Zwecke – werden erst
+            nach Ihrer ausdrücklichen Einwilligung im Cookie-Banner aktiviert (§ 25 Abs. 1
+            TDDDG, Art. 6 Abs. 1 lit. a DSGVO). Derzeit ist in diesen Kategorien kein Dienst
+            aktiv; Analyse- oder Tracking-Dienste Dritter binden wir nicht ein.
           </p>
+          <h3 className="font-semibold mb-2">Kategorien</h3>
+          <ul className="leading-relaxed list-disc pl-5 space-y-2 mb-4">
+            <li>
+              <strong>Notwendig</strong> – Betrieb der Website, Speicherung Ihrer
+              Cookie-Auswahl, Anmeldung im Verwaltungsbereich. Immer aktiv.
+            </li>
+            <li>
+              <strong>Funktional</strong> – eingebettete Inhalte Dritter (z. B. Karten,
+              Videos, Messenger-Kontakt). Nur mit Einwilligung.
+            </li>
+            <li>
+              <strong>Statistik</strong> – zusammengefasste Auswertung der Seitennutzung. Nur
+              mit Einwilligung.
+            </li>
+            <li>
+              <strong>Marketing</strong> – Ausspielung passender Angebote und Messung von
+              Kampagnen. Nur mit Einwilligung.
+            </li>
+          </ul>
           <h3 className="font-semibold mb-2">Eingesetzte Cookies und lokale Speicherung</h3>
           <ul className="leading-relaxed list-disc pl-5 space-y-2 mb-4">
             <li>
@@ -82,16 +104,19 @@ export default function DatenschutzPage() {
               Besucherinnen und Besucher der Website erhalten dieses Cookie nicht.
             </li>
             <li>
-              <strong>kret-cookie-notice-v1</strong> – Eintrag im lokalen Speicher
-              (localStorage) Ihres Browsers, der sich merkt, dass Sie den Cookie-Hinweis
-              bestätigt haben. Es handelt sich nicht um ein Cookie; es werden keine Daten an
-              uns übertragen.
+              <strong>kret-cookie-consent</strong> – Eintrag im lokalen Speicher
+              (localStorage) Ihres Browsers mit Ihrer Auswahl und dem Zeitpunkt der
+              Einwilligung. Es handelt sich nicht um ein Cookie; es werden keine Daten an uns
+              übertragen.
             </li>
           </ul>
+          <h3 className="font-semibold mb-2">Widerruf Ihrer Einwilligung</h3>
           <p className="leading-relaxed">
-            Sie können Cookies jederzeit über die Einstellungen Ihres Browsers löschen oder
-            deren Speicherung einschränken. Die Funktionsfähigkeit dieser Website bleibt
-            davon unberührt.
+            Sie können Ihre Auswahl jederzeit mit Wirkung für die Zukunft ändern oder
+            widerrufen – über den Link „Cookie-Einstellungen“ im Fussbereich jeder Seite.
+            Zusätzlich können Sie Cookies über die Einstellungen Ihres Browsers löschen oder
+            deren Speicherung einschränken. Die Funktionsfähigkeit dieser Website bleibt davon
+            unberührt.
           </p>
         </section>
 
